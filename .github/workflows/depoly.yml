@@ -74,7 +74,7 @@ jobs:
         # sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
         # 도커 컴포즈 진행
-        deploy:
+    deploy:
             runs-on: ubuntu-latest
             needs: docker-cicd
             steps:

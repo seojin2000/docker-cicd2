@@ -73,5 +73,20 @@ jobs:
         # Docker 설치
         # sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-        #deploy:
         # 도커 컴포즈 진행
+        deploy:
+            runs-on: ubuntu-latest
+            needs: docker-cicd
+            steps:
+                - name: ec2에 SSH 접속 -> 도커 컴포즈 가동 -> 서비스 세팅완료
+                  uses: appleboy/ssh-action@v1.1.0
+                  with:
+                    host: ${{ secrets.EC2_HOST }}
+                    username: ${{ secrets.EC2_USERNAME }}
+                    key: ${{ secrets.EC2_KEY }}
+                    script_stop: ture
+
+                    script: |
+                        sudo docker compose down
+                        sudo docker compose up -d
+

@@ -51,7 +51,7 @@ jobs:
         # docker-compose.yml, ./nginx/default.conf 업로드
         # 타겟 : /home/ubuntu
             - name: EC2 필요 파일 업로드
-              uses: appleboy/scp-action@0.1.7
+              uses: appleboy/scp-action@v0.1.7
               with:
                   host: ${{secrets.EC2_HOST}}
                   username:  ${{secrets.EC2_USERNAME}}
